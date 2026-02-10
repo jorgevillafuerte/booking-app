@@ -71,3 +71,47 @@ export default defineConfig([
   },
 ])
 ```
+
+## Serena MCP Server
+
+[Serena](https://github.com/oraios/serena) is a coding agent toolkit that provides semantic code analysis tools (e.g. `find_symbol`, `find_referencing_symbols`, `insert_after_symbol`) to LLM-based agents.
+
+### Prerequisites
+
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) package manager.
+
+### Claude Code
+
+Add Serena to this project:
+
+```bash
+claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context claude-code --project "$(pwd)"
+```
+
+Or add it globally:
+
+```bash
+claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context=claude-code --project-from-cwd
+```
+
+### Claude Desktop
+
+Go to **File → Settings → Developer → MCP Servers → Edit Config** and add to `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "serena": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server"
+      ]
+    }
+  }
+}
+```
+
+Save and fully restart Claude Desktop via **File → Exit**.
