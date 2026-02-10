@@ -1,0 +1,8 @@
+.booking-card {
+  background: var(--color-surface);
+  border-radius: var(--border-radius-card);
+  box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: var(--card-max-width);
+  overflow: hidden;
+}

@@ -1,0 +1,121 @@
+.date-selection-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--space-sm);
+}
+
+.date-selection-step__title {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.date-selection-step__title strong {
+  font-weight: 700;
+}
+
+.date-selection-step__strip-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  width: 100%;
+  position: relative;
+}
+
+.date-selection-step__arrow {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+
+.date-selection-step__arrow:hover {
+  background: var(--color-hover-bg);
+}
+
+.date-selection-step__strip {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--space-xs) 0;
+  flex: 1;
+}
+
+.date-selection-step__strip::-webkit-scrollbar {
+  display: none;
+}
+
+.date-selection-step__day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 64px;
+  padding: var(--space-sm) var(--space-sm);
+  border-radius: var(--border-radius-md);
+  border: 1px solid transparent;
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.date-selection-step__day:hover:not(:disabled) {
+  background: var(--color-hover-bg);
+}
+
+.date-selection-step__day--closed {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.date-selection-step__day--selected {
+  background: var(--color-selected-bg);
+  color: var(--color-selected-text);
+}
+
+.date-selection-step__day-name {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.date-selection-step__day-number {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.date-selection-step__day-month {
+  font-size: var(--font-size-xs);
+}
+
+.date-selection-step__more-dates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 64px;
+  padding: var(--space-sm);
+  border-radius: var(--border-radius-md);
+  border: 1px dashed var(--color-button-outline);
+  background: none;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  cursor: default;
+}

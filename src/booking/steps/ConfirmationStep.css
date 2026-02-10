@@ -1,0 +1,109 @@
+.confirmation-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.confirmation-step__success-icon {
+  color: var(--color-text);
+  animation: scaleIn 400ms ease forwards;
+}
+
+.confirmation-step__title {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.confirmation-step__summary {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-sm) var(--space-lg);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-md);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.confirmation-step__label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-top: 2px;
+}
+
+.confirmation-step__value {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.confirmation-step__cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-button);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: var(--border-radius-pill);
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  font-family: inherit;
+  box-shadow: var(--shadow-button);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  margin-top: var(--space-md);
+}
+
+.confirmation-step__cta:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.confirmation-step__cta:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.confirmation-step__new-btn {
+  background: none;
+  color: var(--color-text);
+  border: 1px solid var(--color-button-outline);
+  border-radius: var(--border-radius-pill);
+  padding: var(--space-sm) var(--space-xl);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  margin-top: var(--space-md);
+}
+
+.confirmation-step__new-btn:hover {
+  background: var(--color-hover-bg);
+}
+
+.confirmation-step__error {
+  width: 100%;
+  text-align: center;
+  color: #ff8a80;
+  font-size: var(--font-size-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(255, 138, 128, 0.1);
+  border-radius: var(--border-radius-sm);
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,113 @@
+.guest-count-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.guest-count-step__title {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.guest-count-step__title strong {
+  font-weight: 700;
+}
+
+.guest-count-step__grid {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.guest-count-step__circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid var(--color-button-outline);
+  background: none;
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.guest-count-step__circle:hover {
+  background: var(--color-hover-bg);
+}
+
+.guest-count-step__circle--selected {
+  background: var(--color-selected-bg);
+  color: var(--color-selected-text);
+  border-color: var(--color-selected-bg);
+}
+
+.guest-count-step__more {
+  font-size: var(--font-size-base);
+}
+
+.guest-count-step__counter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.guest-count-step__counter-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-button-outline);
+  background: none;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+
+.guest-count-step__counter-btn:hover:not(:disabled) {
+  background: var(--color-hover-bg);
+}
+
+.guest-count-step__counter-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.guest-count-step__counter-value {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+  min-width: 48px;
+  text-align: center;
+}
+
+.guest-count-step__confirm {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-button);
+  color: var(--color-button-text);
+  border: none;
+  border-radius: var(--border-radius-pill);
+  padding: var(--space-sm) var(--space-xl);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: var(--shadow-button);
+  transition: transform var(--transition-fast);
+}
+
+.guest-count-step__confirm:hover {
+  transform: translateY(-1px);
+}
