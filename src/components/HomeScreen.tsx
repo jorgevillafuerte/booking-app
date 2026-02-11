@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import type { ReservationResponse } from '../api/reservations.ts'
 import { fetchReservations } from '../api/reservations.ts'
 import { useI18n } from '../i18n/I18nContext.tsx'
-import { Header } from './Header.tsx'
+import { HomeHeader } from './HomeHeader.tsx'
 import { Footer } from './Footer.tsx'
 import { ReservationCard } from './ReservationCard.tsx'
 import './HomeScreen.css'
@@ -11,12 +11,13 @@ interface HomeScreenProps {
   onNewReservation: () => void
 }
 
-type LoadingState = 'idle' | 'loading' | 'success' | 'error'
+type LoadingState = 'loading' | 'success' | 'error'
 
 export function HomeScreen({ onNewReservation }: HomeScreenProps) {
   const { t } = useI18n()
   const [reservations, setReservations] = useState<ReservationResponse[]>([])
-  const [loadingState, setLoadingState] = useState<LoadingState>('idle')
+  const [loadingState, setLoadingState] = useState<LoadingState>('loading')
+  const mountedRef = useRef(true)
 
   useEffect(() => {
     let cancelled = false
@@ -41,6 +42,7 @@ export function HomeScreen({ onNewReservation }: HomeScreenProps) {
 
     return () => {
       cancelled = true
+      mountedRef.current = false
     }
   }, [])
 
@@ -48,18 +50,22 @@ export function HomeScreen({ onNewReservation }: HomeScreenProps) {
     setLoadingState('loading')
     fetchReservations()
       .then((data) => {
-        setReservations(data)
-        setLoadingState('success')
+        if (mountedRef.current) {
+          setReservations(data)
+          setLoadingState('success')
+        }
       })
       .catch((error) => {
-        console.error('Failed to fetch reservations:', error)
-        setLoadingState('error')
+        if (mountedRef.current) {
+          console.error('Failed to fetch reservations:', error)
+          setLoadingState('error')
+        }
       })
   }
 
   return (
     <div className="home-screen">
-      <Header />
+      <HomeHeader />
       <main className="home-screen__main">
         <div className="home-screen__content">
           <h1 className="home-screen__title">{t.home.title}</h1>

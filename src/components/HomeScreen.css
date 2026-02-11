@@ -2,7 +2,6 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #f5ebe0, #d4a574, #c8a0a0);
 }
 
 .home-screen__main {
