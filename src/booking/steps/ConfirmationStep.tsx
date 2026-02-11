@@ -6,7 +6,11 @@ import { createReservation } from '../../api/reservations.ts'
 import { CheckCircleIcon, ArrowRightIcon } from '../../components/Icons.tsx'
 import './ConfirmationStep.css'
 
-export function ConfirmationStep() {
+interface ConfirmationStepProps {
+  onGoHome?: () => void
+}
+
+export function ConfirmationStep({ onGoHome }: ConfirmationStepProps) {
   const state = useBookingState()
   const dispatch = useBookingDispatch()
   const { t } = useI18n()
@@ -75,9 +79,12 @@ export function ConfirmationStep() {
       {isConfirmed ? (
         <button
           className="confirmation-step__new-btn"
-          onClick={() => dispatch({ type: 'RESET' })}
+          onClick={() => {
+            dispatch({ type: 'RESET' })
+            if (onGoHome) onGoHome()
+          }}
         >
-          {t.confirmation.newReservation}
+          {t.confirmation.backToHome}
         </button>
       ) : (
         <button
