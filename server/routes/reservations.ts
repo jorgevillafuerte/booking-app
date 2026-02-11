@@ -6,6 +6,27 @@ import type { Reservation } from '../types.ts'
 
 const reservations = new Hono()
 
+// Helper function to map database row to camelCase Reservation object
+function mapRowToReservation(row: {
+  id: string
+  restaurant_id: string
+  guest_count: number
+  date: string
+  service_id: string
+  time_slot: string
+  created_at: string
+}): Reservation {
+  return {
+    id: row.id,
+    restaurantId: row.restaurant_id,
+    guestCount: row.guest_count,
+    date: row.date,
+    serviceId: row.service_id,
+    timeSlot: row.time_slot,
+    createdAt: row.created_at,
+  }
+}
+
 reservations.post(
   '/',
   zValidator('json', createReservationSchema),
@@ -28,15 +49,7 @@ reservations.post(
       created_at: string
     }
 
-    const reservation: Reservation = {
-      id: row.id,
-      restaurantId: row.restaurant_id,
-      guestCount: row.guest_count,
-      date: row.date,
-      serviceId: row.service_id,
-      timeSlot: row.time_slot,
-      createdAt: row.created_at,
-    }
+    const reservation = mapRowToReservation(row)
 
     return c.json(reservation, 201)
   }
@@ -59,17 +72,25 @@ reservations.get('/:id', (c) => {
     return c.json({ error: 'Reservation not found' }, 404)
   }
 
-  const reservation: Reservation = {
-    id: row.id,
-    restaurantId: row.restaurant_id,
-    guestCount: row.guest_count,
-    date: row.date,
-    serviceId: row.service_id,
-    timeSlot: row.time_slot,
-    createdAt: row.created_at,
-  }
+  const reservation = mapRowToReservation(row)
 
   return c.json(reservation)
+})
+
+reservations.get('/', (c) => {
+  const rows = db.prepare('SELECT * FROM reservations ORDER BY created_at DESC').all() as {
+    id: string
+    restaurant_id: string
+    guest_count: number
+    date: string
+    service_id: string
+    time_slot: string
+    created_at: string
+  }[]
+
+  const reservations = rows.map(mapRowToReservation)
+
+  return c.json({ reservations })
 })
 
 export { reservations }
