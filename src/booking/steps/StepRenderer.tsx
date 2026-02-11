@@ -7,7 +7,11 @@ import { ServicePreferenceStep } from './ServicePreferenceStep.tsx'
 import { TimeSlotStep } from './TimeSlotStep.tsx'
 import { ConfirmationStep } from './ConfirmationStep.tsx'
 
-export function StepRenderer() {
+interface StepRendererProps {
+  onGoHome?: () => void
+}
+
+export function StepRenderer({ onGoHome }: StepRendererProps) {
   const { currentStep } = useBookingState()
 
   switch (currentStep) {
@@ -22,7 +26,7 @@ export function StepRenderer() {
     case Step.TimeSlot:
       return <TimeSlotStep />
     case Step.Confirmation:
-      return <ConfirmationStep />
+      return <ConfirmationStep onGoHome={onGoHome} />
     default: {
       const _exhaustive: never = currentStep
       return _exhaustive
