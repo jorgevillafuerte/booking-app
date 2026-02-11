@@ -1,0 +1,36 @@
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  color: var(--color-text);
+}
+
+.home-header__lang-btn {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+}
+
+.home-header__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.home-header__logo {
+  font-size: var(--font-size-lg);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.home-header__right {
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+}
