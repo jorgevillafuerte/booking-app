@@ -29,3 +29,16 @@ export async function createReservation(data: CreateReservationRequest): Promise
 
   return response.json() as Promise<ReservationResponse>
 }
+
+export async function fetchReservations(): Promise<ReservationResponse[]> {
+  const response = await fetch('/api/reservations', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  })
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch reservations: ${response.status}`)
+  }
+
+  return response.json() as Promise<ReservationResponse[]>
+}
