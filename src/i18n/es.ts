@@ -38,6 +38,15 @@ export const es: Translations = {
     confirmed: 'Reserva confirmada',
     confirmButton: 'Confirmar reserva',
     newReservation: 'Nueva reserva',
+    backToHome: 'Volver al inicio',
+  },
+  home: {
+    title: 'Mis Reservas',
+    newReservation: 'Nueva Reserva',
+    emptyTitle: 'No tienes reservas',
+    emptySubtitle: 'Comienza haciendo tu primera reserva',
+    guests: 'Comensales',
+    loadingError: 'Error al cargar las reservas',
   },
   errors: {
     submitFailed: 'No se pudo completar la reserva',

@@ -43,6 +43,15 @@ export interface Translations {
     confirmed: string
     confirmButton: string
     newReservation: string
+    backToHome: string
+  }
+  home: {
+    title: string
+    newReservation: string
+    emptyTitle: string
+    emptySubtitle: string
+    guests: string
+    loadingError: string
   }
   errors: {
     submitFailed: string
