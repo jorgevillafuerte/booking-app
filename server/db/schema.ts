@@ -6,6 +6,6 @@ export const CREATE_TABLE_SQL = `
     date TEXT NOT NULL,
     service_id TEXT NOT NULL,
     time_slot TEXT NOT NULL,
-    created_at TEXT NOT NULL DEFAULT (datetime('now'))
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )
 `
